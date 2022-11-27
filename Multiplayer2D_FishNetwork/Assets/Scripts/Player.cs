@@ -13,8 +13,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private Animator animator;
-    private string RUN_ANIMATION = "Run";
-    private string ATTACK_ANIMATION = "Attack";
+
     private string GROUND_TAG = "Ground";
     private bool isGrounded;
     private float movementX,
@@ -48,7 +47,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            animator.SetTrigger(ATTACK_ANIMATION);
+            animator.SetTrigger(TagManager.ATTACK_ANIMATION);
         }
     }
 
@@ -57,17 +56,17 @@ public class Player : MonoBehaviour
         Vector3 tempScale = transform.localScale;
         if (movementX > 0)
         {
-            animator.SetBool(RUN_ANIMATION, true);
+            animator.SetBool(TagManager.RUN_ANIMATION, true);
             tempScale.x = scaleVal;
         }
         else if (movementX < 0)
         {
-            animator.SetBool(RUN_ANIMATION, true);
+            animator.SetBool(TagManager.RUN_ANIMATION, true);
             tempScale.x = -scaleVal;
         }
         else
         {
-            animator.SetBool(RUN_ANIMATION, false);
+            animator.SetBool(TagManager.RUN_ANIMATION, false);
         }
         transform.localScale = tempScale;
     }
