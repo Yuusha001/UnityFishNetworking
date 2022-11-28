@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Player Stats")]
     [SerializeField]
-    private float moveForce = 10f,
-        jumpForce = 10f;
+    float moveForce = 10f;
 
     [SerializeField]
-    private Rigidbody2D mybody;
+    float jumpForce = 10f;
+
+    [SerializeField]
+    bool isAttack;
+
+    [Header("Player Body")]
+    [SerializeField]
+    private Rigidbody2D myBody;
+
+    [SerializeField]
+    private Transform virtualBody;
 
     [SerializeField]
     private Animator animator;
-
-    private string GROUND_TAG = "Ground";
     private bool isGrounded;
     private float movementX,
         scaleVal;
@@ -27,7 +35,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.SetFloat("yVelocity", mybody.velocity.y);
+        animator.SetFloat("yVelocity", myBody.velocity.y);
     }
 
     private void FixedUpdate()
@@ -53,7 +61,7 @@ public class Player : MonoBehaviour
 
     void AnimatedPlayer()
     {
-        Vector3 tempScale = transform.localScale;
+        Vector3 tempScale = virtualBody.localScale;
         if (movementX > 0)
         {
             animator.SetBool(TagManager.RUN_ANIMATION, true);
@@ -68,6 +76,6 @@ public class Player : MonoBehaviour
         {
             animator.SetBool(TagManager.RUN_ANIMATION, false);
         }
-        transform.localScale = tempScale;
+        virtualBody.localScale = tempScale;
     }
 }
