@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Dagger_Script : MonoBehaviour
+public class Dagger_Script : PlayerController
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!base.IsOwner)
+            return;
         if (other.CompareTag(TagManager.Team1))
             return;
         if (other.CompareTag(TagManager.Team2))
         {
-            other.GetComponent<HP_Script>().TakeDmg(10);
+            ServerDamager(other.GetComponent<HP_Script>());
         }
     }
 }

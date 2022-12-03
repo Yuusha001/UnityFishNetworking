@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : PlayerController
 {
     [Header("Player Stats")]
     [SerializeField]
@@ -35,11 +35,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!base.IsOwner)
+            return;
         animator.SetFloat("yVelocity", myBody.velocity.y);
     }
 
     private void FixedUpdate()
     {
+        if (!base.IsOwner)
+            return;
         PlayerMoveKeyboard();
         PlayerAttack();
         AnimatedPlayer();
@@ -47,20 +51,26 @@ public class Player : MonoBehaviour
 
     void PlayerMoveKeyboard()
     {
+        if (!base.IsOwner)
+            return;
         movementX = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(movementX, 0f, 0f) * moveForce * Time.fixedDeltaTime;
     }
 
     void PlayerAttack()
     {
+        if (!base.IsOwner)
+            return;
         if (Input.GetKey(KeyCode.Space))
         {
-            animator.SetTrigger(TagManager.ATTACK_ANIMATION);
+            networkAnimator.SetTrigger(TagManager.ATTACK_ANIMATION);
         }
     }
 
     void AnimatedPlayer()
     {
+        if (!base.IsOwner)
+            return;
         Vector3 tempScale = virtualBody.localScale;
         if (movementX > 0)
         {

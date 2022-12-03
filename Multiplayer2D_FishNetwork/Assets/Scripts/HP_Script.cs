@@ -1,12 +1,7 @@
-using System.Net.Mime;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class HP_Script : MonoBehaviour
+public class HP_Script : PlayerController
 {
-    [ContextMenuItem("Test Take Damage", nameof(TestDmg))]
-    [ContextMenuItem("Test Heal", nameof(TestHeal))]
     [Header("Heath Point")]
     [SerializeField]
     int m_HP;
@@ -17,38 +12,41 @@ public class HP_Script : MonoBehaviour
     [SerializeField]
     UnityEngine.UI.Image HPBar;
 
-    void TestDmg()
+    private void Awake()
     {
-        TakeDmg(10);
+        HP = MaxHP;
     }
 
-    void TestHeal()
+    public int HP
     {
-        Heal(10);
+        get => m_HP;
+        set => m_HP = value;
+    }
+    public int MaxHP
+    {
+        get => m_MaxHP;
+        set => m_MaxHP = value;
     }
 
-    public void TakeDmg(int dmg)
+    public void UpdateHP(int Amount)
     {
-        m_HP -= dmg;
-        HPBar.fillAmount = (float)m_HP / m_MaxHP;
-        if (m_HP <= 0)
+        HP = Amount;
+        HPBar.fillAmount = (float)HP / MaxHP;
+        ObserverUpdateHP(HP);
+        if (HP <= 0)
         {
             Debug.Log("I am Died");
         }
     }
 
-    public void Heal(int dmg)
+    [FishNet.Object.ObserversRpc(BufferLast = true)]
+    public void ObserverUpdateHP(int Amount)
     {
-        m_HP += dmg;
-        if (m_HP >= m_MaxHP)
+        HP = Amount;
+        HPBar.fillAmount = (float)HP / MaxHP;
+        if (HP <= 0)
         {
-            m_HP = m_MaxHP;
+            Debug.Log("I am Died");
         }
-        HPBar.fillAmount = (float)m_HP / m_MaxHP;
-    }
-
-    private void Awake()
-    {
-        m_HP = m_MaxHP;
     }
 }
