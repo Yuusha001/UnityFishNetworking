@@ -37,7 +37,7 @@ public class Player : PlayerController
     {
         if (!base.IsOwner)
             return;
-        animator.SetFloat("yVelocity", myBody.velocity.y);
+        animator.SetFloat(TagManager.yVelocity_ANIMATION, myBody.velocity.y);
     }
 
     private void FixedUpdate()
