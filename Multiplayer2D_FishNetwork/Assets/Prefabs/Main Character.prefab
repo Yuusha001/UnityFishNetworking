@@ -296,6 +296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3812132351503698596}
   - component: {fileID: 6955493000570126774}
+  - component: {fileID: 1501652675703780712}
   m_Layer: 0
   m_Name: Dagger_Hitbox
   m_TagString: Untagged
@@ -325,7 +326,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142957614425283308}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -334,6 +335,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!114 &1501652675703780712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142957614425283308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8759129d611c484eb907fdc633c4040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 6
+  _addedNetworkObject: {fileID: -7018323182882381513}
+  _networkObjectCache: {fileID: -7018323182882381513}
 --- !u!1 &314337299729664242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,7 +1332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 3
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: -7018323182882381513}
   _networkObjectCache: {fileID: -7018323182882381513}
   _synchronizeParent: 0
@@ -1358,7 +1374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 4
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: -7018323182882381513}
   _networkObjectCache: {fileID: -7018323182882381513}
   IgnoredParameters: []
@@ -1664,6 +1680,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14575120850f42440b8b7eed1344a497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 1
+  _addedNetworkObject: {fileID: -7018323182882381513}
+  _networkObjectCache: {fileID: -7018323182882381513}
   m_HP: 100
   m_MaxHP: 100
   HPBar: {fileID: 75499165}
@@ -1699,10 +1718,13 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   _networkBehaviours:
   - {fileID: 9086286809500864379}
+  - {fileID: 176066692}
   - {fileID: -1859021200178559042}
   - {fileID: 3141714233517948205}
   - {fileID: 3304723325613712095}
   - {fileID: 3618056122696326431}
+  - {fileID: 1501652675703780712}
+  - {fileID: 0}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -1726,7 +1748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 1
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: -7018323182882381513}
   _networkObjectCache: {fileID: -7018323182882381513}
   _synchronizeParent: 0
@@ -1768,7 +1790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3611c203870d9324994f5bd516ef07d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 2
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: -7018323182882381513}
   _networkObjectCache: {fileID: -7018323182882381513}
 --- !u!1 &9086286808372436724

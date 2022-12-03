@@ -30,6 +30,7 @@ public class Player : PlayerController
     private void Awake()
     {
         scaleVal = transform.localScale.x;
+        this.tag = TagManager.Team2;
     }
 
     // Update is called once per frame
